@@ -1,0 +1,16 @@
+FROM dustynv/jetson-inference:r35.1.0
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV SHELL /bin/bash
+
+WORKDIR /jetson-inference
+
+RUN pip3 install --verbose -i https://pypi.tuna.tsinghua.edu.cn/simple \
+    jupyterlab
+        
+RUN apt update && apt-get install -y --no-install-recommends \
+    vim \
+    && rm -rf /var/lib/apt/lists/*
+
+
+WORKDIR /home
